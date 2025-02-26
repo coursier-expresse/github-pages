@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrutement Coursiers - Déposez des journaux</title>
+    <style>
+        /* Global settings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, rgba(255, 0, 255, 0.8), rgba(0, 255, 255, 0.8), rgba(0, 255, 0, 0.8));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            z-index: 10;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #00FF00;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.6);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        #recrutementBtn {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #FF00FF, #00FFFF);
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #recrutementBtn:hover {
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
+            transform: scale(1.1);
+        }
+
+        .contact-section {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        #chatbox {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        #userMessage {
+            padding: 10px;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #00FF00;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        #sendMessage {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #FF00FF, #00FFFF);
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #sendMessage:hover {
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
+            transform: scale(1.1);
+        }
+
+        /* Notification bubble for candidates */
+        .notification-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #FF00FF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .notification-bubble.active {
+            background-color: #FF0000;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                background-color: #FF00FF;
+            }
+
+            50% {
+                transform: scale(1.2);
+                background-color: #FF0000;
+            }
+
+            100% {
+                transform: scale(1);
+                background-color: #FF00FF;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#recrutement">Recrutement</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Rejoignez notre équipe de coursiers</h1>
+            <p>Déposez des journaux dans les boîtes aux lettres et devenez un acteur de la communication de demain.</p>
+            <button id="recrutementBtn">Postuler maintenant</button>
+        </div>
+    </section>
+
+    <section id="recrutement" class="contact-section">
+        <h2>Recrutement</h2>
+        <form action="#" method="POST" id="form-recrutement">
+            <input type="text" name="nom" placeholder="Nom" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="motivation" placeholder="Pourquoi voulez-vous devenir coursier?" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contactez-nous</h2>
+        <p>Vous avez des questions ? N'hésitez pas à nous contacter par chat.</p>
+        <div id="chatbox">
+            <div id="messages"></div>
+            <input type="text" id="userMessage" placeholder="Tapez votre message..." />
+            <button id="sendMessage">Envoyer</button>
+        </div>
+    </section>
+
+    <!-- Chat notification bubble -->
+    <div class="notification-bubble" id="chatNotification" onclick="showChat()">
+        💬
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Recrutement Coursiers | Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Function to display the chat when the notification bubble is clicked
+        function showChat() {
+            window.location.href = "#contact"; // Redirect to the chat section
+        }
+
+        // Function to simulate the receiving of a message and triggering a notification
+        function receiveMessage(message, sender) {
+            let messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML += `<p><strong>${sender} :</strong> ${message}</p>`;
+            
+            // Show notification bubble for new message
+            document.getElementById("chatNotification").classList.add("active");
+
+            // Auto hide the notification after 5 seconds
+            setTimeout(function () {
+                document.getElementById("chatNotification").classList.remove("active");
+            }, 5000);
+        }
+
+        // Function to send a message from the candidate
+        document.getElementById("sendMessage
